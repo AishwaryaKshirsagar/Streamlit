@@ -16,7 +16,7 @@ container = st.container()
 
 st.title("Mood Based Recommendation system")
 
-image = Image.open('Three.jpg')
+image = Image.open('/Three.jpg')
 st.image(image, caption=' ',width = 520)
 
 title = '<p style="font-family:Sans-serif; color:Pink; font-size: 20px;">Certain Events can make you feel sad, anxious, surprised, excited or shocked. You can still make yourself feel better by watching a movie which would relax you, listening to songs which may calm you down or maybe read an adventure book!!</p>'
@@ -25,7 +25,7 @@ st.markdown(title, unsafe_allow_html=True)
 title = '<p style="font-family:Courier; color:White; font-size: 20px;">Don\'t worry, we are here to help you feel better</p>'
 st.markdown(title, unsafe_allow_html=True)
 
-image = Image.open('scale.jpg')
+image = Image.open('/scale.jpg')
 st.image(image, caption=' ',width = 620)
 
 title = '<p style="font-family:Courier; color:cyan; font-size: 30px;">Just Answer the below questions to get recommendations based on your current mood</p>'
@@ -117,7 +117,7 @@ if(sentiment!=0):
         # ans = '<p style="font-family:Courier; color:cyan; font-size: 40px;">Select Selection2 from sidebar menu to get your recommendations!  </p>'
         # st.markdown(ans, unsafe_allow_html=True)
 
-        image = Image.open('happy.jpg')
+        image = Image.open('/happy.jpg')
         st.image(image, caption=' ',width = 550)
         st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
         st.write("List of books:\n 1. The panic years.\n 2. Carry on Jeeves\n 3. That moment when.\n 4. Bon Mortimer\n 5. The Idiot\n 6. The Timewaster letters.\n 7. The happiest project \n . 8. The Art of happiness \n . 9. The Wangs\n 10. How to be Normal")
@@ -129,7 +129,7 @@ if(sentiment!=0):
     if(count < 15 and count!=0 and sentiment < -0.3):
         ans = '<p style="font-family:Courier; color:cayn; font-size: 40px;">Select Selection3 from sidebar menu to get your recommendations!  </p>'
         st.markdown(ans, unsafe_allow_html=True)
-        image = Image.open('change.jpg')
+        image = Image.open('/change.jpg')
         st.image(image, caption=' ',width = 450)
         st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
         st.subheader("List of books:\n 1. How to stay happy \n 2. When life gives you lemons \n 3. How to become a people magnet\n 4. The Aspirant\n 5. Ikigai\n 6. Being an Indian Teenager\n 7. Before the coffee gets cold\n 8. Fear Not Be strong\n 9. Better than best friends.\n 10. You only live once.")
@@ -140,7 +140,7 @@ if(sentiment!=0):
     if(15 < count < 35 and -0.3 < sentiment < 0.3):
         ans = '<p style="font-family:Courier; color:cyan; font-size: 40px;">Select Selection4 from sidebar menu to get your recommendations!  </p>'
         st.markdown(ans, unsafe_allow_html=True)
-        image = Image.open('Behappy.jpg')
+        image = Image.open('/Behappy.jpg')
         st.image(image, caption=' ',width = 450)
         st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
         st.subheader("List of books:\n 1. Hardy boys \n 2. Harry potter \n 3. Percy Jackson\n 4. Famous Five\n 5. Secret seven\n 6. Mahabharata Secret\n 7. The girl on the train\n 8. Da vinci code\n 9. The sands of time\n 10. Angels and demons")
@@ -167,7 +167,7 @@ def main():
     #    pass
 
     # elif choice == "Selection2":
-    #     image = Image.open('happy.jpg')
+    #     image = Image.open('/happy.jpg')
     #     st.image(image, caption=' ',width = 550)
     #     st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
     #     st.write("List of books:\n 1. The panic years.\n 2. Carry on Jeeves\n 3. That moment when.\n 4. Bon Mortimer\n 5. The Idiot\n 6. The Timewaster letters.\n 7. The happiest project \n . 8. The Art of happiness \n . 9. The Wangs\n 10. How to be Normal")
@@ -175,7 +175,7 @@ def main():
     #     st.write("List of songs: \n 1. Bruno Mars \n 2. Maroon 5 \n 3. Justin Beiber\n 4. Taylor Swift\n 5. Beatles\n 6. Britney Sphears\n 7. Jennifer Lopes\n 8. Kelly Clarkson\n 9. Dua lipa\n 10. Shawn Mendes")
 
     # elif choice == "Selection3":
-    #     image = Image.open('change.jpg')
+    #     image = Image.open('/change.jpg')
     #     st.image(image, caption=' ',width = 450)
     #     st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
     #     st.subheader("List of books:\n 1. How to stay happy \n 2. When life gives you lemons \n 3. How to become a people magnet\n 4. The Aspirant\n 5. Ikigai\n 6. Being an Indian Teenager\n 7. Before the coffee gets cold\n 8. Fear Not Be strong\n 9. Better than best friends.\n 10. You only live once.")
@@ -183,7 +183,7 @@ def main():
     #     st.subheader("List of songs:\n 1. Stronger \n 2. Titanium \n 3. Fight song\n 4. Yun hi chala chal\n 5. Hall of Fame\n 6. Roar\n 7. Jeete hain chal\n 8. Phir se ud chala\n 9. Chak de india\n 10. Roobaroo")
 
     # elif choice == "Selection4":
-    #     image = Image.open('Behappy.jpg')
+    #     image = Image.open('/Behappy.jpg')
     #     st.image(image, caption=' ',width = 450)
     #     st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
     #     st.subheader("List of books:\n 1. Hardy boys \n 2. Harry potter \n 3. Percy Jackson\n 4. Famous Five\n 5. Secret seven\n 6. Mahabharata Secret\n 7. The girl on the train\n 8. Da vinci code\n 9. The sands of time\n 10. Angels and demons")
