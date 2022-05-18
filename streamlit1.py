@@ -16,7 +16,7 @@ container = st.container()
 
 st.title("Mood Based Recommendation system")
 
-image = Image.open('/Three.jpg')
+image = Image.open('Three.jpg')
 st.image(image, caption=' ',width = 520)
 
 title = '<p style="font-family:Sans-serif; color:Pink; font-size: 20px;">Certain Events can make you feel sad, anxious, surprised, excited or shocked. You can still make yourself feel better by watching a movie which would relax you, listening to songs which may calm you down or maybe read an adventure book!!</p>'
