@@ -19,7 +19,19 @@ st.title("Mood Based Recommendation system")
 # image = Image.open('Three.jpg')
 # st.image(image, caption=' ',width = 520)
 
-st.markdown('<style>body{background-color: Blue;}</style>', unsafe_sllow_html = True)
+st.markdown(
+    """
+    <style>
+    .reportview-container {
+        background: url("https://i.pinimg.com/originals/a4/b4/44/a4b444a17c536a3e73ecfdb4c1987d07.png")
+    }
+   .sidebar .sidebar-content {
+        background: url("https://cdn10.bigcommerce.com/s-raqyrv37/products/93/images/418/sky_blue_colored_sand___64320.1454364136.1280.850.jpg")
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 html_temp = '<img src="https://melodica.ae/wp-content/uploads/2017/11/girl_with_headphones_music_m-min.jpg" alt="img">'
 st.markdown(html_temp, unsafe_allow_html = True)
