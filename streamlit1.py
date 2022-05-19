@@ -19,6 +19,13 @@ st.title("Mood Based Recommendation system")
 # image = Image.open('Three.jpg')
 # st.image(image, caption=' ',width = 520)
 
+html_temp = '<div class="img1">
+           <img src="https://melodica.ae/wp-content/uploads/2017/11/girl_with_headphones_music_m-min.jpg" alt="img"> 
+
+           <img src="https://ehonami.blob.core.windows.net/media2020/2021/02/GettyImages-1204482432-1024x683.jpg" alt="img2">
+        </div>'
+st.markdown(html_temp, unsafe_allow_html = True)
+
 title = '<p style="font-family:Sans-serif; color:Pink; font-size: 20px;">Certain Events can make you feel sad, anxious, surprised, excited or shocked. You can still make yourself feel better by watching a movie which would relax you, listening to songs which may calm you down or maybe read an adventure book!!</p>'
 st.markdown(title, unsafe_allow_html=True)
 
