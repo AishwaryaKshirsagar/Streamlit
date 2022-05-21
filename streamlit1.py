@@ -14,131 +14,182 @@ from textblob import TextBlob
 
 container = st.container()
 
-st.title("Mood Based Recommendation system")
+st.title("Mood Analyser")
 
-# image = Image.open('Three.jpg')
-# st.image(image, caption=' ',width = 520)
 
-st.markdown(
-    """
-    <style>
-    .reportview-container {
-        background: url("https://i.pinimg.com/originals/a4/b4/44/a4b444a17c536a3e73ecfdb4c1987d07.png")
-    }
-   .sidebar .sidebar-content {
-        background: url("https://cdn10.bigcommerce.com/s-raqyrv37/products/93/images/418/sky_blue_colored_sand___64320.1454364136.1280.850.jpg")
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-html_temp = '<img src="https://melodica.ae/wp-content/uploads/2017/11/girl_with_headphones_music_m-min.jpg" alt="img">'
-st.markdown(html_temp, unsafe_allow_html = True)
-
-html_temp = '<img src="https://melodica.ae/wp-content/uploads/2017/11/girl_with_headphones_music_m-min.jpg" alt="img">'
-st.markdown(html_temp, unsafe_allow_html = True)
+ html_temp = '<img src="https://img00.deviantart.net/bef5/i/2017/007/9/f/walking_through_the_winter_forest_by_caillean_photography-daulss7.jpg" alt="img" height="500" width="700">'
+ st.markdown(html_temp, unsafe_allow_html = True)
 
 title = '<p style="font-family:Sans-serif; color:Pink; font-size: 20px;">Certain Events can make you feel sad, anxious, surprised, excited or shocked. You can still make yourself feel better by watching a movie which would relax you, listening to songs which may calm you down or maybe read an adventure book!!</p>'
 st.markdown(title, unsafe_allow_html=True)
 
-title = '<p style="font-family:Courier; color:White; font-size: 20px;">Don\'t worry, we are here to help you feel better</p>'
-st.markdown(title, unsafe_allow_html=True)
-
-# image = Image.open('/scale.jpg')
-# st.image(image, caption=' ',width = 620)
-
 title = '<p style="font-family:Courier; color:cyan; font-size: 30px;">Just Answer the below questions to get recommendations based on your current mood</p>'
 st.markdown(title, unsafe_allow_html=True)
 
-question = '<p style="font-family:Courier; color:Orange; font-size: 25px;">1.when was the last time you where really happy?: </p>'
-st.markdown(question, unsafe_allow_html=True)
-title = '<p style="font-family:Courier; color:Yellow; font-size: 20px;">1 = i dont remember      2 = few months ago      3 = few weeks ago    4 = few days ago    5 = few moments ago</p>'
-st.markdown(title, unsafe_allow_html=True)
-q1 = st.slider('Select a value between 1 to 5:  ',min_value=1, max_value = 5,step =1, key = 1)
-st.write(q1)
+q1=st.radio(
+        "1: When was the last time you where really happy?",
+            ('I dont remember' ,'Few months ago' ,'Few weeks ago' ,'Few days ago','Few moments ago'))
+            
+        if q1=="I dont remember" :
+            q1=1;
+        elif q1=="Few months ago":
+            q1=2;
+        elif q1=="Few weeks ago":
+            q1=3;
+        elif q1=="Few days ago":
+            q1=4;
+        else :
+            q1=5;
 
-question = '<p style="font-family:Courier; color:Orange; font-size: 25px;">2.overall how do u rate your comfortness around people?: </p>'
-st.markdown(question, unsafe_allow_html=True)
-q2 = st.slider("Select a value between 1 to 5:  ",min_value=1, max_value = 5,step =1, key=2)
-title = '<p style="font-family:Courier; color:Yellow; font-size: 20px;">low = (1) and high = (5)</p>'
-st.markdown(title, unsafe_allow_html=True)
-st.write(q2)
 
-question = '<p style="font-family:Courier; color:Orange; font-size: 25px;">3.Rate how often u face problems in your work/studies?: </p>'
-st.markdown(question, unsafe_allow_html=True)
-q3 = st.slider("Select a value between 1 to 5:  ",min_value=1, max_value = 5,step =1, key=3)
-title = '<p style="font-family:Courier; color:Yellow; font-size: 20px;">1 = always      2 = very often      3 = sometimes    4 = not much    5 = no</p>'
-st.markdown(title, unsafe_allow_html=True)
-st.write(q3)
+        q2=st.radio(
+            "2. Overall how do you rate your comfortness around people: Low(1) and high (5)",
+            ('1' ,'2' ,'3' ,'4','5'))
 
-question = '<p style="font-family:Courier; color:Orange; font-size: 25px;">4.Rate how often you feel angry/irritated?: </p>'
-st.markdown(question, unsafe_allow_html=True)
-q4 = st.slider("Select a value between 1 to 5: ",min_value=1, max_value = 5,step =1, key=4)
-title = '<p style="font-family:Courier; color:Yellow; font-size: 20px;">1 = always      2 = very often      3 = sometimes    4 = not much    5 = no</p>'
-st.markdown(title, unsafe_allow_html=True)
-st.write(q4)
+        if q2=="1" :
+            q2=1;
+        elif q2=="2":
+            q2=2;
+        elif q2=="3":
+            q2=3;
+        elif q2=="4":
+            q2=4;
+        else :
+            q2=5;
 
-question = '<p style="font-family:Courier; color:Orange; font-size: 25px;">5.when was the last time you felt good about your self?: </p>'
-st.markdown(question, unsafe_allow_html=True)
-q5 = st.slider("Select a value between 1 to 5: ",min_value=1, max_value = 5,step =1, key=5)
-title = '<p style="font-family:Courier; color:Yellow; font-size: 20px;">1 = i dont remember      2 = few months ago      3 = few weeks ago    4 = few days ago    5 = few moments ago</p>'
-st.markdown(title, unsafe_allow_html=True) 
-st.write(q5)
+        q3=st.radio(
+            "3.Rate how often you face problems in your work/studies?",
+            ( 'Always',   'Very often'   ,   'Sometimes'  ,  'Not much'  ,  'No'))
 
-text_area = '<p style="font-family:Courier; color:Pink; font-size: 25px;">How was your day? Please describe in 20 words. You can describe about the various events that took place today. </p>'
-st.markdown(text_area, unsafe_allow_html=True)
+        if q3=="Always":
+            q3=1
+        elif q3=="Very often":
+            q3=2
+        elif q3=="Sometimes":
+            q3=3
+        elif q3=="Not much":
+            q3=4
+        else:
+            q3=5
 
-text_area = st.text_area("Start Typing here - ")
-blob = TextBlob(text_area)
-sentiment = blob.sentiment.polarity
+        q4=st.radio(
+            "4.Rate how often you feel angry/irritated?",
+            ( 'Always',   'Very often'   ,   'Sometimes'  ,  'Not much'  ,  'No'))
 
-question = '<p style="font-family:Courier; color:Orange; font-size: 25px;">6.Rate how often u face problems in your work/studies?  </p>'
-st.markdown(question, unsafe_allow_html=True)
-q6 = st.slider("Select a value between 1 to 5: ",min_value=1, max_value = 5,step =1,key=6)
-title = '<p style="font-family:Courier; color:Yellow; font-size: 20px;">1 = always      2 = very often      3 = sometimes    4 = not much    5 = no</p>'
-st.markdown(title, unsafe_allow_html=True) 
-st.write(q6)
+        if q4=="Always" :
+            q4=1;
+        elif q4=="Very Often":
+            q4=2;
+        elif q4=="Sometime":
+            q4=3;
+        elif q4=="Not much":
+            q4=4;
+        else :
+            q4=5;
 
-question = '<p style="font-family:Courier; color:Orange; font-size: 25px;">7.how much do u overthink?  </p>'
-st.markdown(question, unsafe_allow_html=True)
-q7 = st.slider("Select a value between 1 to 5: ",min_value=1, max_value = 5,step =1,key=7)
-title = '<p style="font-family:Courier; color:Yellow; font-size: 20px;">1 = always      2 = very often      3 = sometimes    4 = not much    5 = no</p>'
-st.markdown(title, unsafe_allow_html=True)
-st.write(q7)
+        q5=st.radio(
+            "5.When was the last time you felt good about yourself?",
+            ('I dont remember' ,'Few months ago' ,'Few weeks ago' ,'Few days ago','Few moments ago'))
 
-question = '<p style="font-family:Courier; color:Orange; font-size: 25px;">8.how content/happy you are with your relationship and family? </p>'
-st.markdown(question, unsafe_allow_html=True)
-q8 = st.slider("Select a value between 1 to 5: ",min_value=1, max_value = 5,step =1,key=8)
-title = '<p style="font-family:Courier; color:Yellow; font-size: 20px;">1 = never      2 = not much      3 = sometimes    4 = very often    5 = always</p>'
-st.markdown(title, unsafe_allow_html=True)
-st.write(q8)    
+        if q5=="I dont remember" :
+            q5=1;
+        elif q5=="Few months ago":
+            q5=2;
+        elif q5=="Few weeks ago":
+            q5=3;
+        elif q5=="Few days ago":
+            q5=4;
+        else :
+            q5=5;
 
-question = '<p style="font-family:Courier; color:Orange; font-size: 25px;">9.how often do you feel anxious/awkward around people?  </p>'
-st.markdown(question, unsafe_allow_html=True)
-q9 = st.slider("Select a value between 1 to 5:  ",min_value=1, max_value = 5,step =1,key=9)
-title = '<p style="font-family:Courier; color:Yellow; font-size: 20px;">1 = always      2 = very often      3 = sometimes    4 = not much    5 = no</p>'
-st.markdown(title, unsafe_allow_html=True)
-st.write(q9)
+        q6=st.radio(
+            "6.Rate how often you face problems in your work/studies?",
+            ('Always' ,'Very Often' ,'Sometimes' ,'Not much','Never'))
+        if q6=="Always" :
+            q6=1;
+        elif q6=="Very Often":
+            q6=2;
+        elif q6=="Sometime":
+            q6=3;
+        elif q6=="Not much":
+            q6=4;
+        else :
+            q6=5;
 
-question = '<p style="font-family:Courier; color:Orange; font-size: 25px;">10.how often you feel like sharing things with people?  </p>'
-st.markdown(question, unsafe_allow_html=True)
-q10 = st.slider("Select a value between 1 to 5:  ",min_value=1, max_value = 5,step =1,key=10)
-title = '<p style="font-family:Courier; color:Yellow; font-size: 20px;">1 = never      2 = not much      3 = sometimes    4 = very often    5 = always</p>'
-st.markdown(title, unsafe_allow_html=True)
-st.write(q10)
+        q7=st.radio(
+            "7.How often do you overthink?",
+            ('Always' ,'Very Often' ,'Sometimes' ,'Not much','Never'))
 
+        if q7=="Always" :
+            q7=1;
+        elif q7=="Very Often":
+            q7=2;
+        elif q7=="Sometime":
+            q7=3;
+        elif q7=="Not much":
+            q7=4;
+        else :
+            q7=5;
+
+        q8=st.radio(
+            "8.How content/happy you are with your relationship and family??",
+        ('Never','Not much','Sometimes','Very often','Always'))
+        if q8=="Never" :
+            q8=1;
+        elif q8=="Not much":
+            q8=2;
+        elif q8=="Sometimes":
+            q8=3;
+        elif q8=="Very Often":
+            q8=4;
+        else :
+            q8=5;  
+
+        q9=st.radio(
+            "9.How often do you feel anxious/awkward around people?",
+            ('Always' ,'Very Often' ,'Sometimes' ,'Not much','Never'))
+
+        if q9=="Always" :
+            q9=1;
+        elif q9=="Very Often":
+            q9=2;
+        elif q9=="Sometime":
+            q9=3;
+        elif q9=="Not much":
+            q9=4;
+        else :
+            q9=5;
+
+
+        q10=st.radio(
+        "10. How often you feel like sharing things with people?",
+        ('Never','Not much','Sometimes','Very often','Always'))
+        if q10=="Never" :
+            q10=1;
+        elif q10=="Not much":
+            q10=2;
+        elif q10=="Sometimes":
+            q10=3;
+        elif q10=="Very Often":
+            q10=4;
+        else :
+            q10=5;
+
+        text_area = '<p style="font-family:Courier; color:White; font-size: 25px;">How was your day? Please describe in 20 words. You can describe about the various events that took place today. </p>'
+        st.markdown(text_area, unsafe_allow_html=True)
+
+        text_area = st.text_area("Start Typing here - ")
+        blob = TextBlob(text_area)
+        sentiment = blob.sentiment.polarity
+        
+       
 count = q1+q2+q3+q4+q5+q6+q7+q8+q9+q10
 print(count)
 print(sentiment)
 
 if(sentiment!=0):
     if(count > 35 and sentiment > 0.3):
-        # ans = '<p style="font-family:Courier; color:cyan; font-size: 40px;">Select Selection2 from sidebar menu to get your recommendations!  </p>'
-        # st.markdown(ans, unsafe_allow_html=True)
 
-#         image = Image.open('/happy.jpg')
-#         st.image(image, caption=' ',width = 550)
         st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
         st.write("List of books:\n 1. The panic years.\n 2. Carry on Jeeves\n 3. That moment when.\n 4. Bon Mortimer\n 5. The Idiot\n 6. The Timewaster letters.\n 7. The happiest project \n . 8. The Art of happiness \n . 9. The Wangs\n 10. How to be Normal")
         st.write("List of movies:\n 1. Liar Liar \n 2. Inside out \n 3. Men in black \n 4. Housefull\n 5. Good Boys\n 6. Welcome.\n 7. Klown\n 8. Phir Hera Pheri\n 9. Khichadi\n 10.Dhamaal")
@@ -149,8 +200,7 @@ if(sentiment!=0):
     if(count < 15 and count!=0 and sentiment < -0.3):
         ans = '<p style="font-family:Courier; color:cayn; font-size: 40px;">Select Selection3 from sidebar menu to get your recommendations!  </p>'
         st.markdown(ans, unsafe_allow_html=True)
-#         image = Image.open('/change.jpg')
-#         st.image(image, caption=' ',width = 450)
+
         st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
         st.subheader("List of books:\n 1. How to stay happy \n 2. When life gives you lemons \n 3. How to become a people magnet\n 4. The Aspirant\n 5. Ikigai\n 6. Being an Indian Teenager\n 7. Before the coffee gets cold\n 8. Fear Not Be strong\n 9. Better than best friends.\n 10. You only live once.")
         st.subheader("List of movies:\n 1. Marley and me \n 2. Harry potter \n 3. The pursuit of happiness\n 4. Legally Blond\n 5. Little miss sunshine\n 6. Pitch Perfect\n 7. The Princess Diaries\n 8. The Shawshank Redemption\n 9. La La Land\n 10. Clueless")
@@ -160,8 +210,7 @@ if(sentiment!=0):
     if(15 < count < 35 and -0.3 < sentiment < 0.3):
         ans = '<p style="font-family:Courier; color:cyan; font-size: 40px;">Select Selection4 from sidebar menu to get your recommendations!  </p>'
         st.markdown(ans, unsafe_allow_html=True)
-#         image = Image.open('/Behappy.jpg')
-#         st.image(image, caption=' ',width = 450)
+
         st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
         st.subheader("List of books:\n 1. Hardy boys \n 2. Harry potter \n 3. Percy Jackson\n 4. Famous Five\n 5. Secret seven\n 6. Mahabharata Secret\n 7. The girl on the train\n 8. Da vinci code\n 9. The sands of time\n 10. Angels and demons")
         st.subheader("List of movies:\n 1. Angels and demons \n 2. Justice League \n 3. Spiderman\n 4. Avengers\n 5. Batman\n 6. Martian\n 7. Da vinci code\n 8. Gravity\n 9. Interstellar\n 10. Fast and furious")
@@ -171,44 +220,8 @@ if(sentiment!=0):
 def main():
     
     st.markdown("""
-    # Mood Recommendation system
+    # Mood Analyser
     """)
-
-
-
-    #Selection2 = happy
-    #Selectin3 = sad
-    # selection4 = normal
-
-    
-
-    # if choice =="Home":
-    #     # st.subheader("Home")
-    #    pass
-
-    # elif choice == "Selection2":
-#         image = Image.open('/happy.jpg')
-#         st.image(image, caption=' ',width = 550)
-    #     st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
-    #     st.write("List of books:\n 1. The panic years.\n 2. Carry on Jeeves\n 3. That moment when.\n 4. Bon Mortimer\n 5. The Idiot\n 6. The Timewaster letters.\n 7. The happiest project \n . 8. The Art of happiness \n . 9. The Wangs\n 10. How to be Normal")
-    #     st.write("List of movies:\n 1. Liar Liar \n 2. Inside out \n 3. Men in black \n 4. Housefull\n 5. Good Boys\n 6. Welcome.\n 7. Klown\n 8. Phir Hera Pheri\n 9. Khichadi\n 10.Dhamaal")
-    #     st.write("List of songs: \n 1. Bruno Mars \n 2. Maroon 5 \n 3. Justin Beiber\n 4. Taylor Swift\n 5. Beatles\n 6. Britney Sphears\n 7. Jennifer Lopes\n 8. Kelly Clarkson\n 9. Dua lipa\n 10. Shawn Mendes")
-
-    # elif choice == "Selection3":
-    #     image = Image.open('/change.jpg')
-    #     st.image(image, caption=' ',width = 450)
-    #     st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
-    #     st.subheader("List of books:\n 1. How to stay happy \n 2. When life gives you lemons \n 3. How to become a people magnet\n 4. The Aspirant\n 5. Ikigai\n 6. Being an Indian Teenager\n 7. Before the coffee gets cold\n 8. Fear Not Be strong\n 9. Better than best friends.\n 10. You only live once.")
-    #     st.subheader("List of movies:\n 1. Marley and me \n 2. Harry potter \n 3. The pursuit of happiness\n 4. Legally Blond\n 5. Little miss sunshine\n 6. Pitch Perfect\n 7. The Princess Diaries\n 8. The Shawshank Redemption\n 9. La La Land\n 10. Clueless")
-    #     st.subheader("List of songs:\n 1. Stronger \n 2. Titanium \n 3. Fight song\n 4. Yun hi chala chal\n 5. Hall of Fame\n 6. Roar\n 7. Jeete hain chal\n 8. Phir se ud chala\n 9. Chak de india\n 10. Roobaroo")
-
-    # elif choice == "Selection4":
-    #     image = Image.open('/Behappy.jpg')
-    #     st.image(image, caption=' ',width = 450)
-    #     st.subheader("Here are the list of movies, songs and books that you should watch to feel better\n")
-    #     st.subheader("List of books:\n 1. Hardy boys \n 2. Harry potter \n 3. Percy Jackson\n 4. Famous Five\n 5. Secret seven\n 6. Mahabharata Secret\n 7. The girl on the train\n 8. Da vinci code\n 9. The sands of time\n 10. Angels and demons")
-    #     st.subheader("List of movies:\n 1. Angels and demons \n 2. Justice League \n 3. Spiderman\n 4. Avengers\n 5. Batman\n 6. Martian\n 7. Da vinci code\n 8. Gravity\n 9. Interstellar\n 10. Fast and furious")
-    #     st.subheader("List of songs:\n 1. Cold play \n 2. Kesha \n 3. Beatles\n 4. Arijit singh\n 5. A R Rahman\n 6. Atif Aslam\n 7. Pitbull\n 8. Drake\n 9. OneRepublic\n 10. Charlie Puth")
 
 if __name__ == '__main__':
     main()
